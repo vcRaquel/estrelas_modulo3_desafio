@@ -19,7 +19,13 @@ public class Sistema {
         System.out.println("digite 4 para exibir a lista de faturas");
         System.out.println("digite 7 para sair");
     }
-    //cadastrar vendedor
-    //cadastrar cliente
-    //cadastrar venda
+    //cadastrar vendedor - método composto com a classe ServicoVendedor
+    public static Vendedor cadastrarVendedor(){
+        String nome = capturarDados("Digite o nome do vendedor: ").nextLine();
+        String email = capturarDados("Digite o email do vendedor: ").nextLine();
+        String cpf = capturarDados("Digite o CPF do vendedor: ").nextLine();
+        return ServicoVendedor.cadastrarVendedor(nome, email, cpf);
+    }
+    //cadastrar cliente - método composto com a classe ServicoCliente
+    //cadastrar venda - método composto com a classe ServicoVenda
 }
