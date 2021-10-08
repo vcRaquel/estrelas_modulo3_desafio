@@ -7,6 +7,9 @@ public class Main {
            System.out.println(Sistema.cadastrarVendedor());
            System.out.println(Sistema.cadastrarCliente());
            System.out.println(Sistema.cadastrarVenda());
+           System.out.println(Sistema.cadastrarVenda());
+           System.out.println("==========================");
+           ServicoVenda.exibirVendas();
        }catch (Exception erro){
            System.out.println(erro.getMessage());
        }
