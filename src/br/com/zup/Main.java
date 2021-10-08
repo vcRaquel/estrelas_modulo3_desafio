@@ -10,6 +10,7 @@ public class Main {
             System.out.println(Sistema.cadastrarVenda());
             System.out.println(Sistema.cadastrarVenda());
             System.out.println(ServicoVenda.comprasCliente("1"));
+            System.out.println(ServicoVenda.vendasVendedor("@"));
 
 //           System.out.println(Sistema.cadastrarVenda());
 //           System.out.println("==========================");

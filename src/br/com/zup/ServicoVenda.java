@@ -40,4 +40,12 @@ public class ServicoVenda {
 
     }
     //listar todas as vendas de um vendedor pelo seu e-mail - método no ServicoVendas pra buscar vendedor pelo email
+    public static List<Venda> vendasVendedor(String email){
+        List<Venda>vendasVendedor = new ArrayList<>();
+        for (Venda referencia: vendas){
+            if (referencia.getVendedor().getEmail().equals(email)){
+                vendasVendedor.add(referencia);
+            }
+        }return vendasVendedor;
+    }
 }
