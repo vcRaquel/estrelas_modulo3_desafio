@@ -23,4 +23,12 @@ public class ServicoVendedor {
         }
     }
     //verificar se o vendedor está cadastrado - percorrer a lista de vendedores comparando cpf ou email;
+    public static Vendedor buscarVendedorCadastrado(String email)throws Exception{
+        for (Vendedor referencia: vendedores){
+            if (referencia.getEmail().equals(email)){
+                return referencia;
+            }
+        }
+        throw new Exception("\n Vendedor não cadastrado");
+    }
 }
