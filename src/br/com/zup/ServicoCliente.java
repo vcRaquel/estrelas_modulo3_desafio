@@ -22,7 +22,7 @@ public class ServicoCliente {
         }
     }
     //verificar se o cliente está cadastrado - percorrer a lista de vendedores comparando cpf ou email;
-    public static Cliente buscarConsumidorCadastrado(String email)throws Exception{
+    public static Cliente buscarClienteCadastrado(String email)throws Exception{
         for (Cliente referencia: clientes){
             if (referencia.getEmail().equals(email)){
                 return referencia;

@@ -9,5 +9,12 @@ public class ServicoVenda {
     //não cadastrar vendas para clientes não cadastrados - providenciar lista de clientes - percorrer a lista comparando cpf ou email
     //não cadastrar vendas de vendedores não cadastrados - providenciar lista de vendedores - percorrer a lista comparando cpf ou email
     //cadastrar diversas vendas no sistema - método composto com a classe sistema para cadastrar uma venda, a lista se encarregará de garantir a multiplicidade de cadastro
+    public static Venda cadastrarVenda(String emailCliente, String emailVendedor, double valorAPagar, String dataRegistro)throws Exception{
+        Cliente cliente = ServicoCliente.buscarClienteCadastrado(emailCliente);
+        Vendedor vendedor = ServicoVendedor.buscarVendedorCadastrado(emailVendedor);
 
+        Venda venda = new Venda(cliente, vendedor, valorAPagar, dataRegistro);
+        vendas.add(venda);
+        return venda;
+    }
 }
