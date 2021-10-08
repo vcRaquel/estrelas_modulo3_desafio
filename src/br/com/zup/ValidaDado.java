@@ -10,8 +10,8 @@ public class ValidaDado {
     }
 
     public static String tratarCpf(String cpf){
-        String cpfTratado = cpf.replaceAll("\\s","");
-        cpfTratado = cpf.replaceAll("[^0-9]+",""); //transformar tudo que não for números de 1 a 9 em ""
+        String cpfTratado = cpf.replaceAll("\\s","");//verificar se ficou redundante ou se é necessário
+        cpfTratado = cpf.replaceAll("[^0-9]+",""); //transformar tudo que não for números de 0 a 9 em ""
         return cpfTratado;
     }
 }
