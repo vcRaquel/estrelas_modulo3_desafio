@@ -50,24 +50,6 @@ public class ServicoVendedor {
 
     }
 
-    //public static Cliente cadastrarCliente(String nome, String email, String cpf) throws Exception {
-    //        ValidaDado.validarEmail(email);
-    //        String cpfTratado = ValidaDado.tratarCpf(cpf);
-    //        boolean cpfCadastrado = verificarCadastroCpfCliente(cpfTratado);
-    //        boolean emailCadastrado = verificaCadastroEmailCliente(email);
-    //        if (!cpfCadastrado && !emailCadastrado) {
-    //            Cliente cliente = new Cliente(nome, email, cpf);
-    //            clientes.add(cliente);
-    //            return cliente;
-    //        } else if (cpfCadastrado && emailCadastrado) {
-    //            throw new Exception("CPF e email já constam no cadastro de clientes");
-    //        } else if (cpfCadastrado) {
-    //            throw new Exception("CPF já consta no cadastro de clientes");
-    //        } else if (emailCadastrado) {
-    //            throw new Exception("email já consta no cadastro de clientes");
-    //        }
-    //        throw new Exception("Não foi possível concluir o cadastro de cliente");
-    //    }
 
     //listar todos vendedores - lista de vendedores - fazer exibição percorrendo a lista e printando a referencia
     //método temporário (?) para testes
