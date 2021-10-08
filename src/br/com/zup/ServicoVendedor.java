@@ -8,7 +8,9 @@ public class ServicoVendedor {
 
 
     //cadastrar vendedor - método composto com a classe sistema para cadastrar um vendedor - a lista garantirá a multiplicidade de cadastros
-    public static Vendedor cadastrarVendedor(String nome, String email, String cpf) {
+    public static Vendedor cadastrarVendedor(String nome, String email, String cpf) throws Exception{
+        ValidaDado.validarEmail(email);
+        ValidaDado.tratarCpf(cpf);
         Vendedor vendedor = new Vendedor(nome, email, cpf);
         vendedores.add(vendedor);
         return vendedor;

@@ -22,7 +22,7 @@ public class Sistema {
     }
 
     //cadastrar vendedor - método composto com a classe ServicoVendedor
-    public static Vendedor cadastrarVendedor() {
+    public static Vendedor cadastrarVendedor() throws Exception{
         String nome = capturarDados("Digite o nome do vendedor: ").nextLine();
         String email = capturarDados("Digite o email do vendedor: ").nextLine();
         String cpf = capturarDados("Digite o CPF do vendedor: ").nextLine();
@@ -30,7 +30,7 @@ public class Sistema {
     }
 
     //cadastrar cliente - método composto com a classe ServicoCliente
-    public static Cliente cadastrarCliente() {
+    public static Cliente cadastrarCliente() throws Exception{
         String nome = capturarDados("Digite o nome do cliente: ").nextLine();
         String email = capturarDados("Digite o email do cliente: ").nextLine();
         String cpf = capturarDados("Digite o CPF do cliente: ").nextLine();
