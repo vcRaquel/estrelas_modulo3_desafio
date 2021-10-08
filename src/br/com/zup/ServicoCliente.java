@@ -44,7 +44,7 @@ public class ServicoCliente {
         } else if (emailCadastrado) {
             throw new Exception("email já consta no cadastro de clientes");
         }
-        throw new Exception("Não foi possível concluir o cadastro de cliente");
+        throw new Exception("Não foi possível concluir o cadastro de cliente");//verificar se é necessária
     }
 
     //listar todos clientes - lista de clientes - fazer exibição percorrendo a lista e printando a referencia

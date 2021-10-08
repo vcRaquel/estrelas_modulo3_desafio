@@ -5,29 +5,83 @@ import java.util.List;
 
 public class ServicoVendedor {
     private static List<Vendedor> vendedores = new ArrayList<>();
+////verificar se o vendedor está cadastrado por cpf - percorrer a lista de vendedores comparando cpf desconsiderando espaço;
 
+    public static boolean verificarCadastroCpfVendedor(String cpf) {
+        String cpfTratado = ValidaDado.tratarCpf(cpf);
+        for (Vendedor referencia : vendedores) {
+            if (referencia.getCpf().equals(cpfTratado)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    //    //verificar se o cliente está cadastrado por email- percorrer a lista de vendedores comparando email;
+    public static boolean verificaCadastroEmailVendedor(String email) {
+        for (Vendedor referencia : vendedores) {
+            if (referencia.getEmail().equals(email)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     //cadastrar vendedor - método composto com a classe sistema para cadastrar um vendedor - a lista garantirá a multiplicidade de cadastros
-    public static Vendedor cadastrarVendedor(String nome, String email, String cpf) throws Exception{
+    public static Vendedor cadastrarVendedor(String nome, String email, String cpf) throws Exception {
         ValidaDado.validarEmail(email);
-        ValidaDado.tratarCpf(cpf);
-        Vendedor vendedor = new Vendedor(nome, email, cpf);
-        vendedores.add(vendedor);
-        return vendedor;
+        String cpfTratado = ValidaDado.tratarCpf(cpf);
+
+        boolean cpfCadastrado = verificarCadastroCpfVendedor(cpfTratado);
+        boolean emailCadastrado = verificaCadastroEmailVendedor(email);
+
+        if (!cpfCadastrado && !emailCadastrado) {
+            Vendedor vendedor = new Vendedor(nome, email, cpf);
+            vendedores.add(vendedor);
+            return vendedor;
+        } else if (cpfCadastrado && emailCadastrado) {
+            throw new Exception("CPF e email já constam no cadastro de vendedores");
+        } else if (cpfCadastrado) {
+            throw new Exception("CPF já consta no cadastro de vendedores");
+        } else if (emailCadastrado) {
+            throw new Exception("email já consta no cadastro de vendedores");
+        }
+        throw new Exception("Não foi possível concluir o cadastro de vendedor");//verificar se é necessária
+
     }
+
+    //public static Cliente cadastrarCliente(String nome, String email, String cpf) throws Exception {
+    //        ValidaDado.validarEmail(email);
+    //        String cpfTratado = ValidaDado.tratarCpf(cpf);
+    //        boolean cpfCadastrado = verificarCadastroCpfCliente(cpfTratado);
+    //        boolean emailCadastrado = verificaCadastroEmailCliente(email);
+    //        if (!cpfCadastrado && !emailCadastrado) {
+    //            Cliente cliente = new Cliente(nome, email, cpf);
+    //            clientes.add(cliente);
+    //            return cliente;
+    //        } else if (cpfCadastrado && emailCadastrado) {
+    //            throw new Exception("CPF e email já constam no cadastro de clientes");
+    //        } else if (cpfCadastrado) {
+    //            throw new Exception("CPF já consta no cadastro de clientes");
+    //        } else if (emailCadastrado) {
+    //            throw new Exception("email já consta no cadastro de clientes");
+    //        }
+    //        throw new Exception("Não foi possível concluir o cadastro de cliente");
+    //    }
 
     //listar todos vendedores - lista de vendedores - fazer exibição percorrendo a lista e printando a referencia
     //método temporário (?) para testes
     public static void exibirVendedores() {
-        System.out.println("\nLista de um total de " +vendedores.size() +  " vendedores: ");
+        System.out.println("\nLista de um total de " + vendedores.size() + " vendedores: ");
         for (Vendedor referencia : vendedores) {
             System.out.println(referencia);
         }
     }
+
     //verificar se o vendedor está cadastrado - percorrer a lista de vendedores comparando cpf ou email;
-    public static Vendedor buscarVendedorCadastrado(String email)throws Exception{
-        for (Vendedor referencia: vendedores){
-            if (referencia.getEmail().equals(email)){
+    public static Vendedor buscarVendedorCadastrado(String email) throws Exception {
+        for (Vendedor referencia : vendedores) {
+            if (referencia.getEmail().equals(email)) {
                 return referencia;
             }
         }
