@@ -40,10 +40,10 @@ public class Sistema {
     //cadastrar venda - método composto com a classe ServicoVenda
     public static Venda cadastrarVenda() throws Exception{
         System.out.println("\n Registro de venda: ");
-        String emailCliente = capturarDados("Digite o email do cliente: ").nextLine();
+        String cpfCliente = capturarDados("Digite o CPF do cliente: ").nextLine();
         String emailVendedor = capturarDados("Digite o email do vendedor: ").nextLine();
         double valorAPagar = capturarDados("Digite o valor a ser pago: ").nextDouble();
         String dataRegistro = capturarDados("Digite a data de registro da venda: ").nextLine();
-        return ServicoVenda.cadastrarVenda(emailCliente, emailVendedor, valorAPagar, dataRegistro);
+        return ServicoVenda.cadastrarVenda(cpfCliente, emailVendedor, valorAPagar, dataRegistro);
     }
 }

@@ -56,10 +56,10 @@ public class ServicoCliente {
         }
     }
 
-    //retornar um cliente que está cadastrado por email- percorrer a lista de vendedores comparando email;
-    public static Cliente buscarClienteCadastrado(String email) throws Exception {
+    //retornar um cliente que está cadastrado por CPF - percorrer a lista de clientes comparando CPF;
+    public static Cliente buscarClienteCadastrado(String cpf) throws Exception {
         for (Cliente referencia : clientes) {
-            if (referencia.getEmail().equals(email)) {
+            if (referencia.getCpf().equals(cpf)) {
                 return referencia;
             }
         }
