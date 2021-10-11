@@ -12,7 +12,7 @@ public class ServicoCliente {
     }
 
 
-    //verificar se o cliente está cadastrado por cpf- percorrer a lista de vendedores comparando cpf desconsiderando espaço;
+    //verificar se o cliente está cadastrado por cpf- percorrer a lista de vendedores comparando cpf;
     public static boolean verificarCadastroCpfCliente(String cpf) {
         String cpfTratado = ValidaDado.tratarCpf(cpf);
         for (Cliente referencia : clientes) {

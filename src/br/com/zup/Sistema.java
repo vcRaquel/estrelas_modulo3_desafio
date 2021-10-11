@@ -66,35 +66,42 @@ public class Sistema {
         List<Cliente> clientes = ServicoCliente.getClientes();
         List<Venda> vendas = ServicoVenda.getVendas();
         while (seletor) {
-            if (vendedores.size() == 0 || clientes.size() == 0){
+            if (vendedores.size() == 0 || clientes.size() == 0) {
+                //enquanto a lista de vendedores ou a lista de clientes estiver vazia,
+                // não irão aparecer as opções relacionadas a venda
                 menuInicial();
 
                 int opcaoUsuario = capturarDados("Digite a opção desejada").nextInt();
+
                 if (opcaoUsuario == 1) {
                     Vendedor vendedor = cadastrarVendedor();
                     System.out.println(vendedor);
                 } else if (opcaoUsuario == 2) {
                     Cliente cliente = cadastrarCliente();
                 } else if (opcaoUsuario == 3) {
-                    if (vendedores.size() == 0){
+                    if (vendedores.size() == 0) {
                         System.out.println("Não há vendedores cadastrados");
                     } else {
                         ServicoVendedor.exibirVendedores();
                     }
                 } else if (opcaoUsuario == 4) {
-                    if (clientes.size()== 0){
+                    if (clientes.size() == 0) {
                         System.out.println("Não há clientes cadastrados");
-                    }else{
+                    } else {
                         ServicoCliente.exibirClientes();
                     }
-                }else if (opcaoUsuario == 5) {
+                } else if (opcaoUsuario == 5) {
                     System.out.println("Finalizando programa de gestão de vendas");
                     seletor = false;
                 }
 
-            }else{
+            } else {
+                //a partir do momento que existir pelo menos um vendedor e um cliente,
+                // as opções relacionadas a venda irão aparecer
                 menuFinal();
+
                 int opcaoUsuario = capturarDados("Digite a opção desejada").nextInt();
+
                 if (opcaoUsuario == 1) {
                     Vendedor vendedor = cadastrarVendedor();
                     System.out.println(vendedor);
@@ -107,7 +114,11 @@ public class Sistema {
                 } else if (opcaoUsuario == 5) {
                     ServicoCliente.exibirClientes();
                 } else if (opcaoUsuario == 6) {
-                    ServicoVenda.exibirVendas();
+                    if (vendas.size() == 0) {
+                        System.out.println("Não há vendas cadastradas");
+                    } else {
+                        ServicoVenda.exibirVendas();
+                    }
                 } else if (opcaoUsuario == 7) {
                     //mostrar vendas de um vendedor
                     String email = capturarDados("Digite o email do vendedor: ").nextLine();
