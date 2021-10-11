@@ -11,8 +11,17 @@ public class Sistema {
         return new Scanner(System.in);
     }
 
-    //menu inicial
-    public static void menu() {
+    //menus
+    public static void menuInicial() {
+        System.out.println("Programa de gerenciamento de vendas: \n");
+        System.out.println("Digite 1 para cadastrar um vendedor");
+        System.out.println("Digite 2 para cadastrar um cliente");
+        System.out.println("digite 3 para exibir a lista de vendedores");
+        System.out.println("digite 4 para exibir a lista de clientes");
+        System.out.println("digite 5 para sair");
+    }
+
+    public static void menuFinal() {
         System.out.println("Programa de gerenciamento de vendas: \n");
         System.out.println("Digite 1 para cadastrar um vendedor");
         System.out.println("Digite 2 para cadastrar um cliente");
@@ -53,39 +62,69 @@ public class Sistema {
 
     public static boolean executar() throws Exception {
         boolean seletor = true;
-        List<Vendedor> vendedores = new ArrayList<>();
-        List<Cliente> clientes = new ArrayList<>();
-        List<Venda> vendas = new ArrayList<>();
+        List<Vendedor> vendedores = ServicoVendedor.getVendedores();
+        List<Cliente> clientes = ServicoCliente.getClientes();
+        List<Venda> vendas = ServicoVenda.getVendas();
         while (seletor) {
-            menu();
-            int opcaoUsuario = capturarDados("Digite a opção desejada").nextInt();
-            if (opcaoUsuario == 1) {
-                Vendedor vendedor = cadastrarVendedor();
-                System.out.println(vendedor);
-            } else if (opcaoUsuario == 2) {
-                Cliente cliente = cadastrarCliente();
-            } else if (opcaoUsuario == 3) {
-                Venda venda = cadastrarVenda();
-            } else if (opcaoUsuario == 4) {
-                ServicoVendedor.exibirVendedores();
-            } else if (opcaoUsuario == 5) {
-                ServicoCliente.exibirClientes();
-            } else if (opcaoUsuario == 6) {
-                ServicoVenda.exibirVendas();
-            } else if (opcaoUsuario == 7) {
-                //mostrar vendas de um vendedor
-                String email = capturarDados("Digite o email do vendedor: ").nextLine();
-                List<Venda> vendasVendedor = ServicoVenda.vendasVendedor(email);
-                System.out.println(vendasVendedor);
-            } else if (opcaoUsuario == 8) {
-                //mostrar compras de um cliente
-                String cpf = capturarDados("Digite o CPF do cliente").nextLine();
-                List<Venda> comprasCliente = ServicoVenda.comprasCliente(cpf);
-                System.out.println(comprasCliente);
-            } else if (opcaoUsuario == 9) {
-                System.out.println("Finalizando programa de gestão de vendas");
-                seletor = false;
+            if (vendedores.size() == 0 || clientes.size() == 0){
+                menuInicial();
+
+                int opcaoUsuario = capturarDados("Digite a opção desejada").nextInt();
+                if (opcaoUsuario == 1) {
+                    Vendedor vendedor = cadastrarVendedor();
+                    System.out.println(vendedor);
+                } else if (opcaoUsuario == 2) {
+                    Cliente cliente = cadastrarCliente();
+                } else if (opcaoUsuario == 3) {
+                    if (vendedores.size() == 0){
+                        System.out.println("Não há vendedores cadastrados");
+                    } else {
+                        ServicoVendedor.exibirVendedores();
+                    }
+                } else if (opcaoUsuario == 4) {
+                    if (clientes.size()== 0){
+                        System.out.println("Não há clientes cadastrados");
+                    }else{
+                        ServicoCliente.exibirClientes();
+                    }
+                }else if (opcaoUsuario == 5) {
+                    System.out.println("Finalizando programa de gestão de vendas");
+                    seletor = false;
+                }
+
+            }else{
+                menuFinal();
+                int opcaoUsuario = capturarDados("Digite a opção desejada").nextInt();
+                if (opcaoUsuario == 1) {
+                    Vendedor vendedor = cadastrarVendedor();
+                    System.out.println(vendedor);
+                } else if (opcaoUsuario == 2) {
+                    Cliente cliente = cadastrarCliente();
+                } else if (opcaoUsuario == 3) {
+                    Venda venda = cadastrarVenda();
+                } else if (opcaoUsuario == 4) {
+                    ServicoVendedor.exibirVendedores();
+                } else if (opcaoUsuario == 5) {
+                    ServicoCliente.exibirClientes();
+                } else if (opcaoUsuario == 6) {
+                    ServicoVenda.exibirVendas();
+                } else if (opcaoUsuario == 7) {
+                    //mostrar vendas de um vendedor
+                    String email = capturarDados("Digite o email do vendedor: ").nextLine();
+                    List<Venda> vendasVendedor = ServicoVenda.vendasVendedor(email);
+                    System.out.println(vendasVendedor);
+                } else if (opcaoUsuario == 8) {
+                    //mostrar compras de um cliente
+                    String cpf = capturarDados("Digite o CPF do cliente").nextLine();
+                    List<Venda> comprasCliente = ServicoVenda.comprasCliente(cpf);
+                    System.out.println(comprasCliente);
+                } else if (opcaoUsuario == 9) {
+                    System.out.println("Finalizando programa de gestão de vendas");
+                    seletor = false;
+                }
             }
+
+
         }
         return seletor;
     }

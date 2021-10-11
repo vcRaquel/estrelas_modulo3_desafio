@@ -5,7 +5,13 @@ import java.util.List;
 
 public class ServicoVendedor {
     private static List<Vendedor> vendedores = new ArrayList<>();
-////verificar se o vendedor está cadastrado por cpf - percorrer a lista de vendedores comparando cpf desconsiderando espaço;
+
+    //getter
+    public static List<Vendedor> getVendedores() {
+        return vendedores;
+    }
+
+    //verificar se o vendedor está cadastrado por cpf - percorrer a lista de vendedores comparando cpf
 
     public static boolean verificarCadastroCpfVendedor(String cpf) {
         String cpfTratado = ValidaDado.tratarCpf(cpf);
@@ -17,7 +23,7 @@ public class ServicoVendedor {
         return false;
     }
 
-    //    //verificar se o cliente está cadastrado por email- percorrer a lista de vendedores comparando email;
+    //verificar se o cliente está cadastrado por email- percorrer a lista de vendedores comparando email;
     public static boolean verificaCadastroEmailVendedor(String email) {
         for (Vendedor referencia : vendedores) {
             if (referencia.getEmail().equals(email)) {
@@ -51,8 +57,7 @@ public class ServicoVendedor {
     }
 
 
-    //listar todos vendedores - lista de vendedores - fazer exibição percorrendo a lista e printando a referencia
-    //método temporário (?) para testes
+    //listar todos vendedores - fazer exibição percorrendo a lista e printando a referencia
     public static void exibirVendedores() {
         System.out.println("\nLista de um total de " + vendedores.size() + " vendedores: ");
         for (Vendedor referencia : vendedores) {
@@ -69,4 +74,6 @@ public class ServicoVendedor {
         }
         throw new Exception("\n Vendedor não cadastrado");
     }
+
+
 }

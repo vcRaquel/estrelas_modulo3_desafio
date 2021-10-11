@@ -60,7 +60,7 @@ public class Venda {
         retorno.append("\n Nome do cliente: " + cliente.getNome());
         retorno.append("\n Nome do vendedor responsável: " + vendedor.getNome());
         retorno.append("\n Valor a ser pago: " + valorASerPago);
-        retorno.append("\n Data de registro da venda: " + dataRegistro);
+        retorno.append("\n Data de registro da venda: " + dataRegistro + "\n");
         return retorno.toString();
     }
 }

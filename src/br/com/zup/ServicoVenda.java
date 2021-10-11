@@ -6,8 +6,11 @@ import java.util.List;
 public class ServicoVenda {
     private static List<Venda> vendas = new ArrayList<>();
 
-    //não cadastrar vendas para clientes não cadastrados - providenciar lista de clientes - percorrer a lista comparando cpf ou email
-    //não cadastrar vendas de vendedores não cadastrados - providenciar lista de vendedores - percorrer a lista comparando cpf ou email
+    //getter
+    public static List<Venda> getVendas() {
+        return vendas;
+    }
+
     //cadastrar diversas vendas no sistema - método composto com a classe sistema para cadastrar uma venda, a lista se encarregará de garantir a multiplicidade de cadastro
     public static Venda cadastrarVenda(String cpfCliente, String emailVendedor, double valorAPagar, String dataRegistro) throws Exception {
         Cliente cliente = ServicoCliente.buscarClienteCadastrado(cpfCliente);
@@ -18,8 +21,7 @@ public class ServicoVenda {
         return venda;
     }
 
-    //listar todas as vendas cadastradas - providenciar lista de vendas - serve também para cadastrar mais de uma venda no sistema
-    //método temporário (?) para testes
+    //listar todas as vendas cadastradas
     public static void exibirVendas() {
         System.out.println("\nLista de um total de " + vendas.size() + " vendas: ");
         for (Venda referencia : vendas) {
@@ -27,25 +29,30 @@ public class ServicoVenda {
         }
     }
 
-    //listar todas compras de um cliente pelo seu cpf - método no ServicoCliente pra buscar cliente pelo cpf
-    public static List<Venda> comprasCliente (String cpfCliente){
+    //listar todas compras de um cliente pelo seu cpf
+    public static List<Venda> comprasCliente(String cpfCliente) {
         String cpfTratado = ValidaDado.tratarCpf(cpfCliente);
-        List<Venda>comprasCliente = new ArrayList<>();
+        List<Venda> comprasCliente = new ArrayList<>();
 
-        for (Venda referencia: vendas){
-            if (referencia.getCliente().getCpf().equals(cpfTratado)){
+        for (Venda referencia : vendas) {
+            if (referencia.getCliente().getCpf().equals(cpfTratado)) {
                 comprasCliente.add(referencia);
             }
-        }return comprasCliente;
+        }
+        return comprasCliente;
 
     }
-    //listar todas as vendas de um vendedor pelo seu e-mail - método no ServicoVendas pra buscar vendedor pelo email
-    public static List<Venda> vendasVendedor(String email){
-        List<Venda>vendasVendedor = new ArrayList<>();
-        for (Venda referencia: vendas){
-            if (referencia.getVendedor().getEmail().equals(email)){
+
+    //listar todas as vendas de um vendedor pelo seu e-mail
+    public static List<Venda> vendasVendedor(String email) {
+        List<Venda> vendasVendedor = new ArrayList<>();
+        for (Venda referencia : vendas) {
+            if (referencia.getVendedor().getEmail().equals(email)) {
                 vendasVendedor.add(referencia);
             }
-        }return vendasVendedor;
+        }
+        return vendasVendedor;
     }
+
+
 }

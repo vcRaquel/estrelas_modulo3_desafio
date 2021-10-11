@@ -6,6 +6,12 @@ import java.util.List;
 public class ServicoCliente {
     private static List<Cliente> clientes = new ArrayList<>();
 
+    //getter
+    public static List<Cliente> getClientes() {
+        return clientes;
+    }
+
+
     //verificar se o cliente está cadastrado por cpf- percorrer a lista de vendedores comparando cpf desconsiderando espaço;
     public static boolean verificarCadastroCpfCliente(String cpf) {
         String cpfTratado = ValidaDado.tratarCpf(cpf);
@@ -48,7 +54,6 @@ public class ServicoCliente {
     }
 
     //listar todos clientes - lista de clientes - fazer exibição percorrendo a lista e printando a referencia
-    //método temporário (?) para testes
     public static void exibirClientes() {
         System.out.println("\nLista de um total de " + clientes.size() + " clientes: ");
         for (Cliente referencia : clientes) {

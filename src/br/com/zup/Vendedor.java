@@ -13,7 +13,7 @@ public class Vendedor extends Pessoa{
         StringBuilder retorno = new StringBuilder();
         retorno.append("\n Nome do vendedor: " + super.getNome());
         retorno.append("\n Email do vendedor: " + super.getEmail());
-        retorno.append("\n CPF do vendedor: " + super.getCpf());
+        retorno.append("\n CPF do vendedor: " + super.getCpf() + "\n");
         return retorno.toString();
     }
 }
